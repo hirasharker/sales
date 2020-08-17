@@ -5,6 +5,8 @@ application/cache/*
 !application/cache/.htaccess
 
 application/logs/*
+user_guide_sales/*
+user_guide/*
 !application/logs/index.html
 !application/logs/.htaccess
 
@@ -15,6 +17,12 @@ user_guide_src/cilexer/build/*
 user_guide_src/cilexer/dist/*
 user_guide_src/cilexer/pycilexer.egg-info/*
 /vendor/
+/system/
+/files/
+/nid/
+/purchase_order/
+/inspection_form/
+/user_guide_sales/
 
 # IDE Files
 #-------------------------

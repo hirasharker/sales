@@ -23,7 +23,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://192.168.10.74:3003/sales/';
+// $config['base_url'] = 'http://202.191.122.108:3003/sales/';
+$root = "http://".$_SERVER['HTTP_HOST'];
+$root .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
+$config['base_url']    = "$root";
 
 /*
 |--------------------------------------------------------------------------
@@ -64,7 +67,7 @@ $config['uri_protocol']	= 'REQUEST_URI';
 |
 | https://codeigniter.com/user_guide/general/urls.html
 */
-$config['url_suffix'] = '.jsp';
+$config['url_suffix'] = '';
 
 /*
 |--------------------------------------------------------------------------
