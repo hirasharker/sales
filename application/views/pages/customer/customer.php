@@ -90,6 +90,12 @@
                   </div>
                 </div>
                 <div class="form-group col-md-6 col-sm-12 col-xs-12">
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12">Spouse Name </label>
+                  <div class="col-md-9 col-sm-9 col-xs-12">
+                      <input id="spouseName" type="text" class="form-control" name="spouse_name" placeholder="" >
+                  </div>
+                </div>
+                <div class="form-group col-md-6 col-sm-12 col-xs-12">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12">Contact Person </label>
                   <div class="col-md-9 col-sm-9 col-xs-12">
                       <input type="text" class="form-control" name="contact_person" placeholder=""  required maxlength="50">
@@ -590,6 +596,14 @@
                       <input id="fatherName" type="text" class="form-control" name="father_name" placeholder="" value="<?php echo $customer_detail->father_name; ?>">
                   </div>
                 </div>
+
+                <div class="form-group col-md-6 col-sm-12 col-xs-12">
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12">Spouse Name </label>
+                  <div class="col-md-9 col-sm-9 col-xs-12">
+                      <input id="spouseName" type="text" class="form-control" name="spouse_name" placeholder="" value="<?php echo $customer_detail->spouse_name; ?>">
+                  </div>
+                </div>
+
                 <div class="form-group col-md-6 col-sm-12 col-xs-12">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12">Mother's Name </label>
                   <div class="col-md-9 col-sm-9 col-xs-12">

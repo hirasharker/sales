@@ -175,6 +175,10 @@
                           <td><b>Mother's Name</b></td>
                           <td><?php echo $customer_detail->mother_name;?></td>
                         </tr>
+                        <tr>
+                          <td><b>Spouse Name</b></td>
+                          <td><?php echo $customer_detail->spouse_name;?></td>
+                        </tr>
                       </tbody>
                     </table>
                     <!-- end user projects -->

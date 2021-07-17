@@ -8,7 +8,7 @@ class Report extends CI_Controller {
 		if($this->session->userdata('employee_id')==NULL){
 			redirect('login','refresh');
 		}
-		if($this->session->userdata('role')!=7 && $this->session->userdata('role')!=15){
+		if($this->session->userdata('role')!=7 && $this->session->userdata('role')!=15 && $this->session->userdata('role')!=11){
 			redirect('dashboard','refresh');
 		}
 		$this->load->model('customer_model','customer_model',TRUE);
@@ -74,9 +74,11 @@ class Report extends CI_Controller {
 		$model_id											=	$this->input->post('model_id');
 		$payment_mode										=	$this->input->post('payment_mode');
 		$status												=	$this->input->post('status');
-		$date 												=	explode('-',$this->input->post('date'));
-		$start_date											=	$date[0];
-		$end_date											=	$date[1];
+		// $date 												=	explode('-',$this->input->post('date'));
+		// $start_date											=	$date[0];
+		// $end_date											=	$date[1];
+		$start_date											=	$this->input->post('start_date');
+		$end_date											=	$this->input->post('end_date');
 
 
 
@@ -128,9 +130,14 @@ class Report extends CI_Controller {
 		$model_id											=	$this->input->post('model_id');
 		$yard_id											=	$this->input->post('yard_id');
 		$payment_mode										=	$this->input->post('payment_mode');
-		$date 												=	explode('-',$this->input->post('date'));
-		$start_date											=	$date[0];
-		$end_date											=	$date[1];
+		// $date 												=	explode('-',$this->input->post('date'));
+		// $start_date											=	$date[0];
+		// $end_date											=	$date[1];
+
+		$start_date											=	$this->input->post('start_date');
+		$end_date											=	$this->input->post('end_date');
+
+
 		$status 											=	$this->input->post('status');
 		// echo json_encode($sub_district_id);die();
 		

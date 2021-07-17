@@ -247,8 +247,9 @@ class Customer_Model extends CI_Model {
         return $result;
     }
     public function get_customers_by_status($status){
-        $this->db->select('*');
+        $this->db->select('tbl_customer.*, tbl_model.model_name, tbl_model.model_code');
         $this->db->from('tbl_customer');
+        $this->db->join('tbl_model','tbl_customer.model_id = tbl_model.model_id','left');
         $this->db->where('status',$status);
         $result_query=$this->db->get();
         $result=$result_query->result();

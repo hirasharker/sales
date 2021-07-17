@@ -38,6 +38,9 @@ class Dashboard extends CI_Controller {
 		if($this->session->userdata('role')==9){
 			redirect('delivery_challan','refresh');
 		}
+		if($this->session->userdata('role')==11){
+			redirect('report','refresh');
+		}
 		
 		$this->load->model('customer_model','customer_model',TRUE);
 		$this->load->model('model_model','model_model',TRUE);

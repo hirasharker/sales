@@ -4,9 +4,9 @@
 public function upload_file($type,$path){
     $upload_path = date("Y");
 
-    if(!is_dir($upload_path)) //create the folder if it's not already exists
+    if(!is_dir($path.'/'.$upload_path)) //create the folder if it's not already exists
     {
-      mkdir($upload_path,0755,TRUE);
+      mkdir($path.'/'.$upload_path,0755,TRUE);
     }
 
     $this->load->library('upload');

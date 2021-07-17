@@ -121,6 +121,7 @@ class Customer extends CI_Controller {
 			$customer_data['phone']								=	$this->input->post('phone','',TRUE);
 			$customer_data['post_code']							=	$this->input->post('post_code','',TRUE);
 		}
+		$customer_data['spouse_name']						=	$this->input->post('spouse_name','',TRUE);
 		$customer_data['finance_name']						=	$this->input->post('finance_name','',TRUE);
 		$customer_data['national_id']						=	$this->input->post('national_id','',TRUE);
 		$customer_data['occupation']						=	$this->input->post('occupation','',TRUE);
@@ -281,6 +282,7 @@ class Customer extends CI_Controller {
 		$customer_data['permanent_address']					=	$this->input->post('permanent_address','',TRUE);
 		$customer_data['father_name']						=	$this->input->post('father_name','',TRUE);
 		$customer_data['mother_name']						=	$this->input->post('mother_name','',TRUE);
+		$customer_data['spouse_name']						=	$this->input->post('spouse_name','',TRUE);
 		$customer_data['phone']								=	$this->input->post('phone','',TRUE);
 		$customer_data['post_code']							=	$this->input->post('post_code','',TRUE);
 		$customer_data['finance_name']						=	$this->input->post('finance_name','',TRUE);

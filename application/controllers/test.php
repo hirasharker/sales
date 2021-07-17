@@ -54,12 +54,12 @@ class Test extends CI_Controller {
 		$this->load->view('template/main_template',$data);
 	}
 
-	public function mkdir(){
+	public function mkdir($path){
 		$upload_path = date("Y");
 
-	    if(!is_dir($upload_path)) //create the folder if it's not already exists
+	    if(!is_dir($path.'/'.$upload_path)) //create the folder if it's not already exists
 	    {
-	      mkdir($upload_path,0755,TRUE);
+	      mkdir($path.'/'.$upload_path,0755,TRUE);
 	    }
 	}
 

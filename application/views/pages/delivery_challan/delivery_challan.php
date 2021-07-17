@@ -58,8 +58,10 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Customer Name</th>
-                                        <th>Booking Date</th>
+                                        <th>DO Date</th>
                                         <th>Delivery Yard</th>
+                                        <th>Model</th>
+                                        <th>Model Code</th>
                                         <th>Chassis No</th>
                                         <th>Engine No</th>
                                         <th>LC Bank</th>
@@ -79,13 +81,15 @@
                                     <form action="<?php echo base_url();?>delivery_challan/update_engine_and_chassis_no" method="post">
                                         <td><?php echo $value->customer_code; ?></td>
                                         <td><?php echo $value->customer_name; ?></td>
-                                        <td ><?php echo $value->time_stamp; ?></td>
+                                        <td ><?php echo $value->do_update_time; ?></td>
                                         <td>
                                             <?php foreach($yard_list as $y_value){if($value->delivery_yard_id==$y_value->delivery_yard_id){
                                                     echo $y_value->yard_name;
                                                 }
                                             }?>
                                         </td>
+                                        <td><?php echo $value->model_name; ?></td>
+                                        <td><?php echo $value->model_code; ?></td>
                                         <td>
                                             <input type="hidden" name="customer_id" value="<?php echo $value->customer_id;?>">
                                             <input type="text" placeholder="" name="chassis_no" required>
@@ -126,13 +130,15 @@
                                     <form action="<?php echo base_url();?>delivery_challan/update_engine_and_chassis_no" method="post">
                                         <td><?php echo $value->customer_code; ?></td>
                                         <td><?php echo $value->customer_name; ?></td>
-                                        <td ><?php echo $value->time_stamp; ?></td>
+                                        <td ><?php echo $value->do_update_time; ?></td>
                                         <td>
                                             <?php foreach($yard_list as $y_value){if($value->delivery_yard_id==$y_value->delivery_yard_id){
                                                     echo $y_value->yard_name;
                                                 }
                                             }?>
                                         </td>
+                                        <td><?php echo $value->model_name; ?></td>
+                                        <td><?php echo $value->model_code; ?></td>
                                         <td>
                                             <input type="hidden" name="customer_id" value="<?php echo $value->customer_id;?>">
                                             <input type="text" placeholder="" name="chassis_no" required>

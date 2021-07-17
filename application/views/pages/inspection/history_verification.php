@@ -80,7 +80,7 @@
                                         <td><?php echo $value->business_address; ?></td>
                                         <td>
                                             <?php if($value->inspection_form!=''){?>
-                                            <a href="<?php echo base_url().'inspection_form/'.$value->inspection_form;?>" target="_blank"><img width="30px" height="40px" src="<?php echo base_url().'inspection_form/'.$value->upload_path.'/'.$value->inspection_form?>" alt="i_form"></a>
+                                            <a href="<?php echo base_url().'inspection_form/'.$value->upload_path.'/'.$value->inspection_form;?>" target="_blank"><img width="30px" height="40px" src="<?php echo base_url().'inspection_form/'.$value->upload_path.'/'.$value->inspection_form?>" alt="i_form"></a>
                                             <?php } else { echo '___';}?>
                                         </td>
                                         <td><?php echo $value->phone; ?></td>

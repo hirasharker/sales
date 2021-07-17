@@ -68,6 +68,7 @@
                       <option value="7">Documentation</option>
                       <option value="8">Accounts</option>
                       <option value="9">Delivery Yard</option>
+                      <option value="11">Report Viewer</option>
                       </select>
                   </div>
                 </div>

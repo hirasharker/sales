@@ -108,4 +108,39 @@ class Delivery_Challan extends CI_Controller {
 		$this->load->view('pages/delivery_challan/print_delivery_challan',$customer_data);
 	}
 
+	public function test_print()
+	{
+		$data               =   array();
+
+
+        $data['navigation'] =   $this->load->view('template/navigation','',TRUE);
+        $data['content']    =   $this->load->view('pages/delivery_challan/test_print','',TRUE);
+        $data['footer']     =   $this->load->view('template/footer','',TRUE);
+		$this->load->view('template/main_template',$data);
+	}
+
+	public function test_print_dc(){
+		$customer_data							=	array();
+		
+		$customer_id							=	$this->input->post('customer_id','',TRUE);
+
+		$customer_data['customer_detail']		=	$this->customer_model->get_customer_by_id($customer_id);
+
+		$customer_data['sales_person']			=	$this->employee_model->get_employee_by_id($customer_data['customer_detail']->mkt_id);
+
+		if($customer_data['sales_person'] == NULL){
+			$customer_data['sales_person']			=	$this->dealer_model->get_dealer_by_id($customer_data['customer_detail']->dealer_id);
+		}
+
+		$customer_data['yard_list']				=	$this->yard_model->get_all_delivery_yards();
+
+		$customer_data['bank_list']				=	$this->bank_model->get_all_banks();
+		
+		$customer_data['model_list']			=	$this->model_model->get_all_models();
+
+		$customer_data['checklist_detail']		=	$this->ck_model->get_checklist_by_customer_id($customer_id);
+
+		$this->load->view('pages/delivery_challan/print_delivery_challan',$customer_data);
+	}
+
 }
