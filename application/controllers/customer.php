@@ -92,6 +92,11 @@ class Customer extends CI_Controller {
 		$this->load->view('template/main_template',$data);
 	}
 
+	// public function add_customer()
+	// {
+	// 	echo "This app is deprecated!";
+	// }
+
 	public function add_customer()
 	{
 		echo '<h4>Adding new record .... </h4>';
@@ -237,6 +242,11 @@ class Customer extends CI_Controller {
 			
 			$update_code_data['customer_code']					=	date('y').'-'.'00'.'-'.$customer_data['city_code'].'-'.$customer_data['model_code'].'-'.$result;
 
+			$ifs_code											=	$this->input->post('ifs_code','',TRUE);
+
+			$update_code_data['ifs_code'] 						=	$ifs_code;
+
+
 			$this->customer_model->update_customer($update_code_data,$result);
 
 			$zonal_head_info									=	$this->employee_model->get_employee_by_id($customer_data['zhead_id']);
@@ -246,7 +256,10 @@ class Customer extends CI_Controller {
 
 			$customer_data['contact_person']					=	$this->input->post('contact_person','',TRUE);
 
-			$customer_data['customer_code']						=	$update_code_data['customer_code'];
+			
+
+			$customer_data['customer_code']						=	date('y').'-'.'00'.'-'.$customer_data['city_code'].'-'.$customer_data['model_code'].'-'.$ifs_code;
+
 			
 			$result_msdb										=	$this->add_customer_to_msdb($customer_data, $result);
 
@@ -266,6 +279,11 @@ class Customer extends CI_Controller {
 		$data['customer_id']			=	$customer_id;
 		$this->load->view('pages/customer/customer_entry_confirmation',$data);
 	}
+
+	// public function update_customer()
+	// {
+	// 	echo "this app is deprecated";		
+	// }
 
 	public function update_customer()
 	{
@@ -691,6 +709,22 @@ class Customer extends CI_Controller {
 		$result						=	$this->sub_district_model->get_sub_district_by_district_id($district_id);
 
 		echo json_encode($result);
+		// a die here helps ensure a clean ajax call
+	}
+	
+
+	public function ajax_check_ifs_code(){
+		$ifs_code 					=	$this->input->post('ifs_code');
+
+		// $result = NULL;
+
+		// if (ifs_code != ""){
+			$result						=	$this->customer_model->get_customer_by_ifs_code($ifs_code);	
+		// }
+		
+
+		echo json_encode($result);
+		die();
 		// a die here helps ensure a clean ajax call
 	}
 

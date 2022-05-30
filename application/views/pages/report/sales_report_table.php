@@ -4,11 +4,16 @@
     <th>SN</th>
     <th>Customer ID</th>
     <th>Customer Name</th>
+    <th>Father Name</th>
+    <th>Mother Name</th>
+    <th>Spouse Name</th>
     <th>City</th>
     <th>District</th>
     <th>Sub District</th>
     <th>Present Address</th>
+    <th>Permanent Address</th>
     <th>Phone</th>
+    <th>NID</th>
     <th>Model</th>
     <th>Application</th>
     <th>Engine No</th>
@@ -35,6 +40,9 @@
 		<td><?php echo $i; $i++; ?></td>
 		<td><?php echo $value->customer_code; ?></td>			
 		<td><?php echo $value->customer_name; ?></td>
+		<td><?php echo $value->father_name; ?></td>
+		<td><?php echo $value->mother_name; ?></td>
+		<td><?php echo $value->spouse_name; ?></td>
 		<td>
 			<?php foreach($city_list as $c_value){ if($c_value->city_id == $value->city_id){
 					echo $c_value->city_name;
@@ -44,7 +52,9 @@
 		<td><?php echo $value->district_name; ?></td>
 		<td><?php echo $value->sub_district_name; ?></td>
 		<td><?php echo $value->present_address; ?></td>
+		<td><?php echo $value->permanent_address; ?></td>
 		<td><?php echo $value->phone; ?></td>
+		<td><?php echo $value->national_id; ?></td>
 		
 		<td>
 		<?php foreach($model_list as $m_value){if($m_value->model_id==$value->model_id){

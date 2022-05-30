@@ -41,6 +41,7 @@
                 <h2>Basic Info <small></small></h2>
                   <div class="clearfix"></div>
                 </div>
+
                 <div class="form-group col-md-6 col-sm-12 col-xs-12">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12">Reference </label>
                   <div class="col-md-9 col-sm-9 col-xs-12">
@@ -50,6 +51,12 @@
                       <option customerName="<?php echo $value->customer_name; ?>" fatherName="<?php echo $value->father_name; ?>" motherName="<?php echo $value->mother_name; ?>" value="<?php echo $value->customer_id; ?>"><?php echo $value->customer_code; ?></option>
                       <?php }?>
                       </select>
+                  </div>
+                </div>
+                <div class="form-group col-md-6 col-sm-12 col-xs-12">
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12">IFS Code </label>
+                  <div class="col-md-9 col-sm-9 col-xs-12">
+                      <input type="text" id="ifs-code" class="form-control" name="ifs_code" placeholder="" required>
                   </div>
                 </div>
 
@@ -1308,6 +1315,40 @@
               }
           });
       });
+
+
+      $("#ifs-code").keyup(function(){
+          // $('#subDistrictId').val('');
+          // $('#subDistrictId').change();
+          
+          var ifsCode = $('#ifs-code').val();
+          console.log(ifsCode);
+
+          $.ajax({
+              type: "POST",
+              url: "<?php echo base_url()?>customer/ajax_check_ifs_code/",
+              data: { 'ifs_code': ifsCode  },
+              success: function(data){
+                  // Parse the returned json data
+                  var opts = $.parseJSON(data);
+                  console.log(opts.length)
+
+                  if (opts.length === 1) {
+                    $("#ifs-code").val("");
+                    alert("Already Exists!!!")
+                  }
+                  // Use jQuery's each to iterate over the opts value
+                  $.each(opts, function(i, d) {
+                      console.log(d.ifs_code);
+                      // You will need to alter the below to get the right values from your json object.  Guessing that d.id / d.modelName are columns in your carModels data
+                      // $("#ifs-code").val("");
+
+                  });
+              }
+          });
+      });
+
+
       $("#vehicleModel").change(function(){ 
           var element = $(this).find('option:selected'); 
           var modelCode = element.attr("modelCode");

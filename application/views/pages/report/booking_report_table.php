@@ -4,9 +4,17 @@
         <th>SN</th>
         <th>Customer ID</th>
         <th>Customer Name</th>
+        <th>Father's Name</th>
+        <th>Mother's Name</th>
+        <th>Spouse Name</th>
         <th>District</th>
+        <th>Sub District</th>
+        <th>ZIP</th>
+        <th>Area</th>
         <th>Present Address</th>
+        <th>Permanent Address</th>
         <th>Phone</th>
+        <th>NID</th>
         <th>Model</th>
         <th>Price</th>
         <th>Additional Charge</th>
@@ -24,12 +32,21 @@
             <td><?php echo $i; $i++; ?></td>
             <td><?php echo $value->customer_code; ?></td>           
             <td><?php echo $value->customer_name; ?></td>
+            <td><?php echo $value->father_name; ?></td>
+            <td><?php echo $value->mother_name; ?></td>
+            <td><?php echo $value->spouse_name; ?></td>
             <td><?php foreach($district_list as $dst_value){ if($dst_value->district_id == $value->district_id){
                      echo $dst_value->district_name; 
                  }}?>
             </td>
+            <td><?php echo $value->sub_district_name; ?></td>
+
+            <td><?php echo $value->post_code; ?></td>
+            <td><?php echo $value->city_name; ?></td>
             <td><?php echo $value->present_address; ?></td>
+            <td><?php echo $value->permanent_address; ?></td>
             <td><?php echo $value->phone; ?></td>
+            <td><?php echo $value->national_id; ?></td>
             <td>
             <?php foreach($model_list as $m_value){if($m_value->model_id==$value->model_id){
                 echo $m_value->model_name;

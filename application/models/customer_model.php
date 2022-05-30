@@ -18,13 +18,15 @@ class Customer_Model extends CI_Model {
     }
 
     public function get_all_customers_booking_data_by_search_criteria($zone_id='',$city_id='',$mkt_id='',$dealer_id= '',$model_id='',$payment_mode='',$start_date='',$end_date='',$status){
-        $this->db->select('*');
+        $this->db->select('tbl_customer.*, tbl_city.city_name, tbl_sub_district.sub_district_name');
         $this->db->from('tbl_customer');
+        $this->db->join('tbl_city', 'tbl_city.city_id = tbl_customer.city_id','left');
+        $this->db->join('tbl_sub_district', 'tbl_sub_district.sub_district_id = tbl_customer.sub_district_id', 'left');
         if($zone_id!=''){
             $this->db->where('zone_id',$zone_id);    
         }
         if($city_id!=''){
-            $this->db->where('city_id',$city_id);    
+            $this->db->where('tbl_customer.city_id',$city_id);    
         }
         if($mkt_id!=''){
             $this->db->where('mkt_id',$mkt_id);    
@@ -40,8 +42,8 @@ class Customer_Model extends CI_Model {
         }
         
         if($start_date!=''){
-            $this->db->where('STR_TO_DATE(time_stamp, "%Y-%m-%d") >=',$start_date);
-            $this->db->where('STR_TO_DATE(time_stamp, "%Y-%m-%d") <=',$end_date);
+            $this->db->where('STR_TO_DATE(tbl_customer.time_stamp, "%Y-%m-%d") >=',$start_date);
+            $this->db->where('STR_TO_DATE(tbl_customer.time_stamp, "%Y-%m-%d") <=',$end_date);
         }
         if($status==9){
             $this->db->where('status',$status);
@@ -251,6 +253,16 @@ class Customer_Model extends CI_Model {
         $this->db->from('tbl_customer');
         $this->db->join('tbl_model','tbl_customer.model_id = tbl_model.model_id','left');
         $this->db->where('status',$status);
+        $result_query=$this->db->get();
+        $result=$result_query->result();
+        return $result;
+    }
+    
+    public function get_customer_by_ifs_code($ifs_code){
+        $this->db->select('tbl_customer.*');
+        $this->db->from('tbl_customer');
+        $this->db->where('ifs_code',$ifs_code);
+        $this->db->limit(1);
         $result_query=$this->db->get();
         $result=$result_query->result();
         return $result;
